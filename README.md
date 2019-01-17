@@ -166,7 +166,7 @@ When dealing with documents, you can either uses indexed class instances or lite
 The examples presents in this chapter are based on this setup.
 
 ```typescript
-import { Field, Elasticsearch, Primary } from '@gojob/ts-elasticsearch';
+import { Field, Elasticsearch, Primary } from '@warchant/ts-elasticsearch';
 
 const elasticsearch = new Elasticsearch({ host: 'http://192.168.99.100:9200' });
 
