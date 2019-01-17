@@ -2,6 +2,9 @@
     "name": "@warchant/ts-elasticsearch",
     "version": "1.0.0",
     "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
     "description": "Elasticsearch decorated by TypeScript",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",

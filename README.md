@@ -1,13 +1,14 @@
 # @gojob/ts-elasticsearch
 
-[![travis build](https://img.shields.io/travis/warchant/node-ts-elasticsearch.svg)](https://travis-ci.org/gojob-1337/node-ts-elasticsearch)
+[![Build Status](https://travis-ci.org/Warchant/node-ts-elasticsearch.svg?branch=master)](https://travis-ci.org/Warchant/node-ts-elasticsearch)
+[![codecov](https://codecov.io/gh/Warchant/node-ts-elasticsearch/branch/master/graph/badge.svg)](https://codecov.io/gh/Warchant/node-ts-elasticsearch)
 
 ## Info
 
 This repository is a fork of https://github.com/gojob-1337/node-ts-elasticsearch repository. 
 It introduces upgrades for packages, fixes for linting.
 
-The goal is to make this lib support ES 6.x.
+The goal is to make this lib support ES 6.5+.
 
 ## Description
 

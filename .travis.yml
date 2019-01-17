@@ -9,3 +9,12 @@ env:
 script:
 - yarn coverage
 after_success: bash <(curl -s https://codecov.io/bash) -t ${CODECOV_TOKEN} -f coverage/lcov.info
+
+deploy:
+  provider: npm
+  email: warchantua@gmail.com
+  api_key:
+    secure: woDTbB6usSbxATH0GEJLl9b83pxPJGisjLWZhpAxkMsl81rrGEWroHsyj9EPchj9zGXsTIaicPAE7eSg+Cl2Q59cG/3r64AlJWFigfoAThtauh5S6nK4zRd4o1diz3yk0rnDoJWQC/Vz65aCelq1KcPVPB3OXEFs5AtTA59Gnf7QWMG4iVeKqPC6ZA9D08AVHMJ+ki687SncoNw6oH/EKr4rjxXvOAoaLBKciTzpuSksAD0qvkBhqjUWw2XYf7/vynrWpEB/6ZF3lNKqlLuWXtsk7pcpitJ4tiqYH41nyel9EBRmd4mJWH4I9cQemGP3J/0dizrUoeUTsDeacIhcZqx2w0ZI02irYVlTm5N7WpzzyI+8E/oBBbO/R4gRhDC4xa26LGa6YYsx9k+6D+XvxY3liDLnzJp193iE+kQyt4UMOUnXJU+kqH5MbG+5mJiXN4JbC13cEVKZlRpLRPQmEfkZ1BaKLE5DNt0tYjDFvzIe9qYBKNgi9yKh5XVFa6nEQpN97DTaWt7rHso57Mxc2vLK6yaaxJXi0Fqsw3Nrka4uMMkQVYidd2jDugjfV2RUQ/czBbRchU+Fq5KswTZwmYlFmSSRvjHF6fKr5AQyLuFH4odCStfLODl8l8NPJ5t0Lc+ab/UyXsd4wzuoHySvos5uL8ud0tvLcxCI34CK42A=
+  on:
+    tags: true
+    repo: Warchant/node-ts-elasticsearch
