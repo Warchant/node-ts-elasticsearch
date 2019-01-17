@@ -24,7 +24,8 @@
         "build": "tsc",
         "lint": "tslint -c ./tslint.json -p ./tsconfig.json -t verbose",
         "start": "echo 'Not runable' && exit 1",
-        "test": "jest --silent=false --config=jest.json",
+        "test": "jest --silent=false src",
+        "test:integration": "jest --silent=false integration",
         "coverage": "yarn test --coverage"
     },
     "devDependencies": {
@@ -45,5 +46,24 @@
     "dependencies": {
         "elasticsearch": "^15.3.0",
         "reflect-metadata": "^0.1.13"
+    },
+    "jest":{
+        "transform": {
+            "^.+\\.tsx?$": "ts-jest"
+        },
+        "testRegex": ".*\\.test\\.ts$",
+        "moduleFileExtensions": [
+            "ts",
+            "js",
+            "json"
+        ],
+        "collectCoverageFrom" : [
+            "src/**/*.ts",
+            "!**/node_modules/**",
+            "!*.test.ts"
+        ],
+        "coverageReporters": ["json", "lcov"],
+        "coverageDirectory": "coverage",
+        "verbose": true
     }
 }

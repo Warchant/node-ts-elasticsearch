@@ -3,11 +3,22 @@ node_js:
 - '11'
 - '9'
 - '8'
+
+services:
+  - docker
+
 env:
   global:
     secure: MyuCEVSZN9q21xgU/iF4TnKD1WMYohEWxtVI+nOu92A0HDYk3kyu3HanocXwbDLW1AJOL61VK+VkxOsZt773dG5yZ7LyD5fbwtlPu8Q4OTvtQ2+HwCtHIlxobDQg3KdPE55rw0BVYgbJzsppDd9DuPcPNYvbkndcA4d9D6HpfBr8lfE0fjswB+jtmHUSeCcXfEym3wUc8JogZYAlolZjOwX65owr2YCxbWeVJKqWM+N/XkpQrRTf4F0hdaVovBxsMQqLbH0J1Rk2mG4qKiIJMdt5xrtnjhf+SLJPZG+abRTwlz7DC7rlQOFVE1cvL3LLdNy7uvlUOSpU5xg2BpLMxlhJBUZm4SDBEq1dwbVd4fVhnd2rzP7OWM5ZHcMd+XDQqCLR8qzy7lSmGI+6hslGcnM9nydBxGBOTPoMRDgSj0sCn3WTJaUc/SIvRyHKsFzFzZGeChi9idr+TSRAZTwTPNxzsSU+cIxsDXQIbm8tVYNPILioQfp72c8Dd5r6pV53M7UQbrt/COo6Hc2Kexe1Lx3xvU+Thmq3zyPQPJ7c14d09E03mzxrCtEj2WCeioD261ubxMAa97KYIuKF99efMIx8e6OhcFmXG6wnBtFI2rTYbmzNrTpTlPQEN0+gay7TxoybmDdkE+uwCyYUcPJVuYL+0xXQcR0L8mwyKiGACQk=
+
+before_script:
+  - docker run -d -p 9200:9200 -e discovery.type=single-node docker.elastic.co/elasticsearch/elasticsearch:6.5.4
+  - sleep 20
+
 script:
-- yarn coverage
+  - yarn test:integration
+  - yarn coverage
+
 after_success: bash <(curl -s https://codecov.io/bash) -t ${CODECOV_TOKEN} -f coverage/lcov.info
 
 deploy:

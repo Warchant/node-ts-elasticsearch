@@ -1,3 +1,4 @@
+/* tslint:disable:no-shadowed-variable */
 import { IPropertiesMetadata } from '../';
 import { ICoreOptions } from './core';
 import { getId, getIndexMetadata, getPropertiesMetadata } from './metadata-handler';
@@ -11,19 +12,19 @@ beforeEach(() => jest.clearAllMocks());
 let options: ICoreOptions;
 
 class User {
+  cities?: City[];
+  city?: City;
   id?: string;
   name?: string;
   values?: number[];
-  city?: City;
-  cities?: City[];
 }
 class Country {
   name: string;
 }
 
 class City {
-  name: string;
   country: Country;
+  name: string;
 }
 
 describe('getPureMapping', () => {

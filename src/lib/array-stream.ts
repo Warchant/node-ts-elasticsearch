@@ -9,6 +9,7 @@ export class ArrayStream extends Readable {
 
   _read(size: number): void {
     if (this.source) {
+      // @ts-ignore
       for (const source of this.source) {
         this.push(source);
       }

@@ -3,12 +3,18 @@
 [![Build Status](https://travis-ci.org/Warchant/node-ts-elasticsearch.svg?branch=master)](https://travis-ci.org/Warchant/node-ts-elasticsearch)
 [![codecov](https://codecov.io/gh/Warchant/node-ts-elasticsearch/branch/master/graph/badge.svg)](https://codecov.io/gh/Warchant/node-ts-elasticsearch)
 
-## Info
+## Fork Information
 
-This repository is a fork of https://github.com/gojob-1337/node-ts-elasticsearch repository. 
-It introduces upgrades for packages, fixes for linting.
+This repository is a fork of https://github.com/gojob-1337/node-ts-elasticsearch. 
 
-The goal is to make this lib support ES 6.5+.
+**Changelog**:
+- bump versions in package.json
+- fix linting errors
+- add integration test
+
+This library is guaranteed to work with `docker.elastic.co/elasticsearch/elasticsearch:6.5.4` version.
+
+
 
 ## Description
 
@@ -36,7 +42,6 @@ class User {
 }
 
 // ...
-
 const elasticsearch = new Elasticsearch({ host: 'http://192.168.99.100:9200' });
 
 await elasticsearch.indices.create(User);
@@ -51,7 +56,7 @@ await elasticsearch.index(user);
 
 await elasticsearch.indices.refresh(User);
 
-const { documents } = elasticsearch.search(User, { body: { query: { match_all: {} } } });
+const { documents } = await elasticsearch.search(User, { body: { query: { match_all: {} } } });
 
 
 ```
