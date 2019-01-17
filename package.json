@@ -1,5 +1,5 @@
 {
-    "name": "@warchant/ts-elasticsearch",
+    "name": "@warchantua/ts-elasticsearch",
     "version": "1.4.0",
     "license": "MIT",
     "publishConfig": {

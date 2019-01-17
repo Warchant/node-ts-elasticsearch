@@ -1,4 +1,4 @@
-# @warchant/ts-elasticsearch
+# @warchantua/ts-elasticsearch
 
 [![Build Status](https://travis-ci.org/Warchant/node-ts-elasticsearch.svg?branch=master)](https://travis-ci.org/Warchant/node-ts-elasticsearch)
 [![codecov](https://codecov.io/gh/Warchant/node-ts-elasticsearch/branch/master/graph/badge.svg)](https://codecov.io/gh/Warchant/node-ts-elasticsearch)
@@ -23,13 +23,13 @@ The purpose of this library is to provide a decorated class approch to use the [
 ## Installation
 
 ```
-yarn add @warchant/ts-elasticsearch
+yarn add @warchantua/ts-elasticsearch
 ```
 
 ## Usage example
 
 ```typescript
-import { Index, Field, Elasticsearch, Primary } from '@warchant/ts-elasticsearch';
+import { Index, Field, Elasticsearch, Primary } from '@warchantua/ts-elasticsearch';
 
 @Index()
 class User {
@@ -166,7 +166,7 @@ When dealing with documents, you can either uses indexed class instances or lite
 The examples presents in this chapter are based on this setup.
 
 ```typescript
-import { Field, Elasticsearch, Primary } from '@warchant/ts-elasticsearch';
+import { Field, Elasticsearch, Primary } from '@warchantua/ts-elasticsearch';
 
 const elasticsearch = new Elasticsearch({ host: 'http://192.168.99.100:9200' });
 
