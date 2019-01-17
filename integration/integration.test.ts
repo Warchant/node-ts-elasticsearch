@@ -22,7 +22,7 @@ const doTest = async (apiVersion: string) => {
   // try to delete index User
   try {
     await es.indices.delete(User);
-  } finally {
+  } catch {
     // ignore, if it did not exist
   }
 
