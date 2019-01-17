@@ -1,4 +1,4 @@
-# @gojob/ts-elasticsearch
+# @warchant/ts-elasticsearch
 
 [![Build Status](https://travis-ci.org/Warchant/node-ts-elasticsearch.svg?branch=master)](https://travis-ci.org/Warchant/node-ts-elasticsearch)
 [![codecov](https://codecov.io/gh/Warchant/node-ts-elasticsearch/branch/master/graph/badge.svg)](https://codecov.io/gh/Warchant/node-ts-elasticsearch)
