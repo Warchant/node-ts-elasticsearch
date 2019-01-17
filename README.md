@@ -1,7 +1,13 @@
 # @gojob/ts-elasticsearch
 
-[![travis build](https://img.shields.io/travis/gojob-1337/node-ts-elasticsearch.svg)](https://travis-ci.org/gojob-1337/node-ts-elasticsearch)
-[![Coverage Status](https://coveralls.io/repos/github/gojob-1337/node-ts-elasticsearch/badge.svg?branch=master)](https://coveralls.io/github/gojob-1337/node-ts-elasticsearch?branch=master)
+[![travis build](https://img.shields.io/travis/warchant/node-ts-elasticsearch.svg)](https://travis-ci.org/gojob-1337/node-ts-elasticsearch)
+
+## Info
+
+This repository is a fork of https://github.com/gojob-1337/node-ts-elasticsearch repository. 
+It introduces upgrades for packages, fixes for linting.
+
+The goal is to make this lib support ES 6.x.
 
 ## Description
 
@@ -10,13 +16,13 @@ The purpose of this library is to provide a decorated class approch to use the [
 ## Installation
 
 ```
-yarn add @gojob/ts-elasticsearch
+yarn add @warchant/ts-elasticsearch
 ```
 
 ## Usage example
 
 ```typescript
-import { Field, Elasticsearch, Primary } from '@gojob/ts-elasticsearch';
+import { Index, Field, Elasticsearch, Primary } from '@warchant/ts-elasticsearch';
 
 @Index()
 class User {
@@ -181,7 +187,7 @@ Extended options provided by IConfigOptions:
 
 |     Name    |                                                    Type                                                   | Optional | Description                     |
 |:-----------:|:---------------------------------------------------------------------------------------------------------:|:--------:|---------------------------------|
-| client      | [elasticsearch.Client](https://github.com/elastic/elasticsearch-js/blob/14.x/docs/configuration.asciidoc) |     X    | Official client instance to use |
+| client      | [elasticsearch.Client](https://github.com/elastic/elasticsearch-js/blob/15.x/docs/configuration.asciidoc) |     X    | Official client instance to use |
 | indexPrefix |                                                   string                                                  |     X    | Prefix to set to all indices    |
 
 #### Core functions

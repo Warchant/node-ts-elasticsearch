@@ -1,12 +1,11 @@
 import { Readable } from 'stream';
 
 export class ArrayStream extends Readable {
-  private source: any[] | null;
-
   constructor(source: any[]) {
     super({ objectMode: true });
     this.source = source.slice();
   }
+  private source: any[] | null;
 
   _read(size: number): void {
     if (this.source) {

@@ -18,14 +18,13 @@ export interface ICoreOptions {
 }
 
 export class Core {
-  constructor(private readonly client: Client, private readonly options: ICoreOptions) {}
-
   /**
-   * Close the connection
+   * Return all Indexed classes
    */
-  close(): void {
-    return this.client.close();
+  static getIndices(): AnyClass[] {
+    return IndexStore.getAll();
   }
+  constructor(private readonly client: Client, private readonly options: ICoreOptions) {}
 
   /**
    * Bulk index multiple documents
@@ -78,6 +77,13 @@ export class Core {
       stream.on('data', onData);
       stream.on('end', onEnd);
     });
+  }
+
+  /**
+   * Close the connection
+   */
+  close(): void {
+    return this.client.close();
   }
 
   /**
@@ -150,19 +156,12 @@ export class Core {
    * @param cls
    * @param idOrParams
    */
-  async get<T>(cls: IndexedClass<T>, idOrParams: string | IndexedGetParams): Promise<{ response: GetResponse<T>; document: T }> {
+  async get<T>(cls: IndexedClass<T>, idOrParams: string | IndexedGetParams): Promise<{ document: T; response: GetResponse<T> }> {
     const metadata = getIndexMetadata(this.options, cls);
     const params: GetParams = { index: metadata.index, type: metadata.type, ...(typeof idOrParams === 'string' ? { id: idOrParams } : idOrParams) };
     const response = await this.client.get<T>(params);
     const document = instantiateResult(cls, response._source);
     return { response, document };
-  }
-
-  /**
-   * Return all Indexed classes
-   */
-  static getIndices(): AnyClass[] {
-    return IndexStore.getAll();
   }
 
   /**
@@ -200,7 +199,7 @@ export class Core {
    * @param cls
    * @param params
    */
-  async scroll<T>(cls: IndexedClass<T>, params: ScrollParams): Promise<{ response: SearchResponse<T>; documents: T[] }> {
+  async scroll<T>(cls: IndexedClass<T>, params: ScrollParams): Promise<{ documents: T[]; response: SearchResponse<T> }> {
     const response = await this.client.scroll<T>(params);
     const documents = response.hits.hits.map(hit => instantiateResult(cls, hit._source));
     return { response, documents };
@@ -212,7 +211,7 @@ export class Core {
    * @param cls
    * @param params
    */
-  async search<T>(cls: IndexedClass<T>, params: IndexedSearchParams): Promise<{ response: SearchResponse<T>; documents: T[] }> {
+  async search<T>(cls: IndexedClass<T>, params: IndexedSearchParams): Promise<{ documents: T[]; response: SearchResponse<T> }> {
     const metadata = getIndexMetadata(this.options, cls);
     const response = await this.client.search<T>({ index: metadata.index, type: metadata.type, ...params });
     const documents = response.hits.hits.map(hit => instantiateResult(cls, hit._source));

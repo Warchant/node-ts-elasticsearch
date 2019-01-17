@@ -5,9 +5,9 @@ import { ICoreOptions } from './core';
 
 export interface IndexMetadata {
   index: string;
-  type: string;
   primary?: string;
   settings?: any;
+  type: string;
 }
 
 /**

@@ -4,8 +4,8 @@ import { Core, ICoreOptions } from './core';
 import { Indices } from './indices';
 
 export interface IConfigOptions extends es.ConfigOptions {
-  indexPrefix?: string;
   client?: es.Client;
+  indexPrefix?: string;
 }
 
 export class Elasticsearch extends Core {

@@ -1,4 +1,4 @@
-import { IFieldStructure, IPropertiesMetadata } from '../decorators/field.decorator';
+import { IFieldStructure, IPropertiesMetadata } from '..';
 import { IndexedClass } from '../types';
 import { ICoreOptions } from './core';
 import { getId, getIndexMetadata, getPropertiesMetadata } from './metadata-handler';

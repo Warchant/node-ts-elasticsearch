@@ -4,8 +4,8 @@ import { AnyClass } from '../types';
 
 export interface IIndexOptions {
   index?: string;
-  type?: string;
   settings?: any;
+  type?: string;
 }
 
 /**

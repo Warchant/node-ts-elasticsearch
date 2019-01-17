@@ -1,7 +1,6 @@
 import * as es from 'elasticsearch';
 
 import { Index } from './decorators/index.decorator';
-import { Field, Primary } from './index';
 import * as library from './index';
 import { Elasticsearch } from './lib/elasticsearch';
 
@@ -20,10 +19,10 @@ describe('Main structure', () => {
   });
 
   it('exposes Primary decorator', () => {
-    expect(library.Primary).toBe(Primary);
+    expect(library.Primary).toBe(library.Primary);
   });
 
   it('exposes Field decorator', () => {
-    expect(library.Field).toBe(Field);
+    expect(library.Field).toBe(library.Field);
   });
 });

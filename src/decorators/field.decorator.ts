@@ -17,8 +17,6 @@ export interface IDisabledFieldOptions {
 }
 
 export interface IFieldOptions {
-  type: FieldType;
-  index?: boolean;
   boost?: number;
   coerce?: boolean;
   copy_to?: string;
@@ -26,31 +24,33 @@ export interface IFieldOptions {
   dynamic?: true | false | 'strict';
   enabled?: true;
   ignore_malformed?: boolean;
+  index?: boolean;
   index_options?: 'docs' | 'freqs' | 'positions' | 'offsets';
   norms?: boolean;
   null_value?: any;
   similarity?: string;
   store?: boolean;
+  type: FieldType;
 }
 export interface IStringFieldOptions extends IFieldOptions {
-  type: StringType;
   analyzer?: string;
-  search_analyzer?: string;
-  normalizer?: string;
+  eager_global_ordinals?: boolean;
   fielddata?: boolean;
   fielddata_frequency_filter?: any;
-  eager_global_ordinals?: boolean;
-  ignore_above?: number;
-  position_increment_gap?: number;
-  term_vector?: 'no' | 'yes' | 'with_positions' | 'with_offsets' | 'with_positions_offsets';
   fields?: {
     [name: string]: IStringFieldOptions;
   };
+  ignore_above?: number;
+  normalizer?: string;
+  position_increment_gap?: number;
+  search_analyzer?: string;
+  term_vector?: 'no' | 'yes' | 'with_positions' | 'with_offsets' | 'with_positions_offsets';
+  type: StringType;
 }
 
 export interface IDateFieldOptions extends IFieldOptions {
-  type: 'date';
   format?: string;
+  type: 'date';
 }
 
 export interface IObjectOptions {
@@ -65,34 +65,34 @@ export interface INestedOptions {
  * Elasticsearch available options
  */
 export interface IESFieldOptions {
-  type?: string;
-  index?: boolean;
+  analyzer?: string;
   boost?: number;
   coerce?: boolean;
   copy_to?: string;
   doc_values?: boolean;
   dynamic?: true | false | 'strict';
+  eager_global_ordinals?: boolean;
   enabled?: boolean;
-  ignore_malformed?: boolean;
-  index_options?: string;
-  norms?: boolean;
-  null_value?: any;
-  similarity?: string;
-  store?: boolean;
-  format?: string;
-  analyzer?: string;
-  search_analyzer?: string;
-  normalizer?: string;
   fielddata?: boolean;
   fielddata_frequency_filter?: any;
-  eager_global_ordinals?: boolean;
-  ignore_above?: number;
-  position_increment_gap?: number;
-  term_vector?: string;
   fields?: {
     [name: string]: IStringFieldOptions;
   };
+  format?: string;
+  ignore_above?: number;
+  ignore_malformed?: boolean;
+  index?: boolean;
+  index_options?: string;
+  normalizer?: string;
+  norms?: boolean;
+  null_value?: any;
+  position_increment_gap?: number;
   properties?: IPropertiesMetadata;
+  search_analyzer?: string;
+  similarity?: string;
+  store?: boolean;
+  term_vector?: string;
+  type?: string;
 }
 
 export interface IFieldStructure extends IESFieldOptions {
