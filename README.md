@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.com/Warchant/node-ts-elasticsearch.svg?branch=master)](https://travis-ci.com/Warchant/node-ts-elasticsearch)
 [![CodeFactor](https://www.codefactor.io/repository/github/warchant/node-ts-elasticsearch/badge/master)](https://www.codefactor.io/repository/github/warchant/node-ts-elasticsearch/overview/master)
 [![codecov](https://codecov.io/gh/Warchant/node-ts-elasticsearch/branch/master/graph/badge.svg)](https://codecov.io/gh/Warchant/node-ts-elasticsearch)
+[![DepShield Badge](https://depshield.sonatype.org/badges/Warchant/node-ts-elasticsearch/depshield.svg)](https://depshield.github.io)
 
 # @warchantua/ts-elasticsearch
 
