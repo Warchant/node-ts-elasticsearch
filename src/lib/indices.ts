@@ -14,7 +14,7 @@ export class Indices {
    */
   async create<T>(cls: IndexedClass<T>): Promise<any> {
     const metadata = getIndexMetadata(this.options, cls);
-    return await this.client.indices.create({ index: metadata.index, body: metadata.settings });
+    return this.client.indices.create({ index: metadata.index, body: metadata.settings });
   }
 
   /**
@@ -22,7 +22,7 @@ export class Indices {
    */
   async delete<T>(cls: IndexedClass<T>): Promise<any> {
     const metadata = getIndexMetadata(this.options, cls);
-    return await this.client.indices.delete({ index: metadata.index });
+    return this.client.indices.delete({ index: metadata.index });
   }
 
   /**
@@ -30,7 +30,7 @@ export class Indices {
    */
   async exists<T>(cls: IndexedClass<T>): Promise<boolean> {
     const metadata = getIndexMetadata(this.options, cls);
-    return await this.client.indices.exists({ index: metadata.index });
+    return this.client.indices.exists({ index: metadata.index });
   }
 
   /**
@@ -48,7 +48,7 @@ export class Indices {
   async putMapping<T>(cls: IndexedClass<T>): Promise<any> {
     const metadata = getIndexMetadata(this.options, cls);
     const fieldsMetadata = getPropertiesMetadata(cls);
-    return await this.client.indices.putMapping({
+    return this.client.indices.putMapping({
       index: metadata.index,
       type: metadata.type,
       body: {
