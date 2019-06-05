@@ -31,7 +31,7 @@
     "devDependencies": {
         "@gojob/tslint-config": "^0.0.5",
         "@types/elasticsearch": "^5.0.30",
-        "@types/jest": "^23.3.13",
+        "@types/jest": "^24.0.13",
         "@types/node": "^10.12.18",
         "jest": "^23.6.0",
         "prettier": "^1.16.1",
