@@ -24,9 +24,9 @@
   integrity sha512-KyGnisdXv2JEYLNnvqiV8Kzqy3kantHJhVQYB9RCWHD9lM/DYurgMD/nAd6bH64g0QtT4+LXRBLiDBRwS68+vg==
 
 "@types/elasticsearch@^5.0.30":
-  version "5.0.33"
-  resolved "https://registry.yarnpkg.com/@types/elasticsearch/-/elasticsearch-5.0.33.tgz#b0fd37dc674f498223b6d68c313bdfd71f4d812b"
-  integrity sha512-n/g9pqJEpE4fyUE8VvHNGtl7E2Wv8TCroNwfgAeJKRV4ghDENahtrAo1KMsFNIejBD2gDAlEUa4CM4oEEd8p9Q==
+  version "5.0.34"
+  resolved "https://registry.yarnpkg.com/@types/elasticsearch/-/elasticsearch-5.0.34.tgz#e2983eaa71243ed10d74253178e4cf24413e1d01"
+  integrity sha512-WZ0ZvO//5ZdNV6BpOzRH+bs7kJfRM00Mg9+o4wj1nUv9VVltzNhpiBXdx+3guPKPSR8TgSpMxL58IvCsBe+dag==
 
 "@types/jest-diff@*":
   version "20.0.1"
