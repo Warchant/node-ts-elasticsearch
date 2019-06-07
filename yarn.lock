@@ -18,10 +18,10 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@gojob/tslint-config@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@gojob/tslint-config/-/tslint-config-0.0.5.tgz#cf88a9097f825648824a0d6404c1e164f42a592f"
-  integrity sha512-KyGnisdXv2JEYLNnvqiV8Kzqy3kantHJhVQYB9RCWHD9lM/DYurgMD/nAd6bH64g0QtT4+LXRBLiDBRwS68+vg==
+"@gojob/tslint-config@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@gojob/tslint-config/-/tslint-config-1.0.0.tgz#02e86b56c1f9af3ab0558b96d41d2c16344f6ccf"
+  integrity sha512-oBc50ulrVANHZQhWH/40BJDe0nqvFOw9uv5a+hjMG88iQN8HAiR3kgFCvOoJNSyc9hqHlL1ywOZAQYGsXmtIOQ==
 
 "@types/elasticsearch@^5.0.30":
   version "5.0.34"
