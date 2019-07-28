@@ -29,10 +29,10 @@
         "coverage": "yarn test --coverage"
     },
     "devDependencies": {
-        "@gojob/tslint-config": "^0.0.5",
+        "@gojob/tslint-config": "^1.0.0",
         "@types/elasticsearch": "^5.0.30",
         "@types/jest": "^24.0.13",
-        "@types/node": "^10.12.18",
+        "@types/node": "^12.6.8",
         "jest": "^24.8.0",
         "prettier": "^1.16.1",
         "ts-jest": "^24.0.2",
