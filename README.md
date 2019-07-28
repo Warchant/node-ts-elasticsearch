@@ -18,6 +18,10 @@ This library is guaranteed to work with `docker.elastic.co/elasticsearch/elastic
 
 
 
+## NPM publish
+
+**To publish a new version of this package, you have to build the project before run `npm publish`.**
+
 ## Description
 
 The purpose of this library is to provide a decorated class approch to use the [elasticsearch](https://www.npmjs.com/package/elasticsearch) module.
