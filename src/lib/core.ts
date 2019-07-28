@@ -11,7 +11,7 @@ export type IndexedGetParams = Indexed<GetParams>;
 export type IndexedSearchParams = Indexed<SearchParams>;
 export type IndexedCountParams = Indexed<CountParams>;
 
-export const BULK_ITEMS_COUNT_MAX = 1000;
+export const DEFAULT_BULK_SIZE = 100;
 
 export interface ICoreOptions {
   indexPrefix?: string;
@@ -27,11 +27,18 @@ export class Core {
   constructor(private readonly client: Client, private readonly options: ICoreOptions) {}
 
   /**
+   * Close the connection
+   */
+  close(): void {
+    return this.client.close();
+  }
+
+  /**
    * Bulk index multiple documents
    * @param cls
    * @param documentsOrStream
    */
-  bulkIndex<T>(cls: IndexedClass<T>, documentsOrStream: Array<Partial<T>> | Readable): Promise<void> {
+  bulkIndex<T>(cls: IndexedClass<T>, documentsOrStream: Array<Partial<T>> | Readable, bulkSize: number = DEFAULT_BULK_SIZE): Promise<void> {
     return new Promise((resolve, reject) => {
       const items: Array<Partial<T>> = [];
       const stream: Readable = Array.isArray(documentsOrStream) ? new ArrayStream(documentsOrStream) : documentsOrStream;
@@ -51,7 +58,7 @@ export class Core {
 
       const onData = async (item: Partial<T>) => {
         items.push(item);
-        if (items.length >= BULK_ITEMS_COUNT_MAX) {
+        if (items.length >= bulkSize) {
           stream.pause();
           await send();
           stream.resume();
@@ -77,13 +84,6 @@ export class Core {
       stream.on('data', onData);
       stream.on('end', onEnd);
     });
-  }
-
-  /**
-   * Close the connection
-   */
-  close(): void {
-    return this.client.close();
   }
 
   /**
@@ -156,7 +156,7 @@ export class Core {
    * @param cls
    * @param idOrParams
    */
-  async get<T>(cls: IndexedClass<T>, idOrParams: string | IndexedGetParams): Promise<{ document: T; response: GetResponse<T> }> {
+  async get<T>(cls: IndexedClass<T>, idOrParams: string | IndexedGetParams): Promise<{ response: GetResponse<T>; document: T }> {
     const metadata = getIndexMetadata(this.options, cls);
     const params: GetParams = { index: metadata.index, type: metadata.type, ...(typeof idOrParams === 'string' ? { id: idOrParams } : idOrParams) };
     const response = await this.client.get<T>(params);
@@ -199,7 +199,7 @@ export class Core {
    * @param cls
    * @param params
    */
-  async scroll<T>(cls: IndexedClass<T>, params: ScrollParams): Promise<{ documents: T[]; response: SearchResponse<T> }> {
+  async scroll<T>(cls: IndexedClass<T>, params: ScrollParams): Promise<{ response: SearchResponse<T>; documents: T[] }> {
     const response = await this.client.scroll<T>(params);
     const documents = response.hits.hits.map(hit => instantiateResult(cls, hit._source));
     return { response, documents };
@@ -211,7 +211,7 @@ export class Core {
    * @param cls
    * @param params
    */
-  async search<T>(cls: IndexedClass<T>, params: IndexedSearchParams): Promise<{ documents: T[]; response: SearchResponse<T> }> {
+  async search<T>(cls: IndexedClass<T>, params: IndexedSearchParams): Promise<{ response: SearchResponse<T>; documents: T[] }> {
     const metadata = getIndexMetadata(this.options, cls);
     const response = await this.client.search<T>({ index: metadata.index, type: metadata.type, ...params });
     const documents = response.hits.hits.map(hit => instantiateResult(cls, hit._source));
